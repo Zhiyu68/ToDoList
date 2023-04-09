@@ -1,0 +1,40 @@
+<%- include('header'); -%>
+
+
+    <!-- 与app.js 中的 kindOfDay 是同一个，用来交互数据 -->
+    <div class="box" id="heading">
+        <h1>
+            <%= listTittle %>
+        </h1>
+
+    </div>
+
+    <div class="box">
+        <ul>
+
+            <% for (let i=0; i<newListItems.length;i++){ %>
+                <div class="item">
+                    <input type="checkbox">
+                    <!-- styles.css 中的 input:checked+p  指的是 所有紧跟input 为checkbox 的<p>-->
+                    <p>
+                        <%= newListItems[i] %>
+                    </p>
+
+                </div>
+
+                <% } %>
+        </ul>
+
+        <!-- form 将向 home route 发出 post 请求，并将我们的文本输入值（newItem）发布出去 -->
+        <form class="item" action="/" method="post">
+
+            <!-- 数据传递 用的是 name -->
+            <!-- autocomplete="off" 关闭自动建议 -->
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+
+            <button type="submit" name="list" value=<%=listTittle %> > + </button>
+        </form>
+
+    </div>
+
+    <%- include('footer'); -%>
